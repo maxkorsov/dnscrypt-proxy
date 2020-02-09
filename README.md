@@ -1,2 +1,3 @@
 # dnscrypt-proxy
-Configuration and Settings DNSCrypt
+
+Конфигурация и настройка DNSCrypt (с русскими комментариями)

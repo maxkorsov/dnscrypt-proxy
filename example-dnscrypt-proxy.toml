@@ -102,15 +102,15 @@ force_tcp = false
 # http_proxy = 'http://127.0.0.1:8888'
 
 
-## How long a DNS query will wait for a response, in milliseconds.
-## If you have a network with *a lot* of latency, you may need to
-## increase this. Startup may be slower if you do so.
-## Don't increase it too much. 10000 is the highest reasonable value.
+## Как долго DNS запрос будет ждать ответа, в миллисекундах.
+## Если ваша сеть имеет *большую* задержку, вам может потребоваться
+## увеличить ее. Запуск может замедлиться, если вы это сделаете.
+## Не увеличивайте слишком сильно. 10000 - это самое высокое разумное значение.
 
 timeout = 5000
 
 
-## Keepalive for HTTP (HTTPS, HTTP/2) queries, in seconds
+## Длительность HTTP (HTTPS, HTTP/2) запросов, в секундах
 
 keepalive = 30
 
