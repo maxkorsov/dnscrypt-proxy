@@ -1,103 +1,103 @@
 
 ##############################################
 #                                            #
-#        dnscrypt-proxy configuration        #
+#        Конфигурация dnscrypt-proxy         #
 #                                            #
 ##############################################
 
-## This is an example configuration file.
-## You should adjust it to your needs, and save it as "dnscrypt-proxy.toml"
+## Это пример файла конфигурации.
+## Вы должны настроить его под свои нужды и сохранить как "dnscrypt-proxy.toml"
 ##
-## Online documentation is available here: https://dnscrypt.info/doc
+## Онлайн документация: https://dnscrypt.info/doc
 
 
 
 ##################################
-#         Global settings        #
+#      Глобальные настройки      #
 ##################################
 
-## List of servers to use
+## Список серверов для использования
 ##
-## Servers from the "public-resolvers" source (see down below) can
-## be viewed here: https://dnscrypt.info/public-servers
+## Сервера из источника "public-resolvers" (см. ниже) можно
+## посмотреть на: https://dnscrypt.info/public-servers
 ##
-## If this line is commented, all registered servers matching the require_* filters
-## will be used.
+## Если эта строка закомментирована, то будут использоваться все зарегистрированные сервера
+## соответствующие фильтрам require_ *.
 ##
-## The proxy will automatically pick the fastest, working servers from the list.
-## Remove the leading # first to enable this; lines starting with # are ignored.
+## Прокси автоматически выберет самые быстрые, работающие серверы из списка.
+## Чтобы что-то включить удалите пед строкой знак #, иначе строки начинающиеся с # будут игнорироваться.
 
 # server_names = ['scaleway-fr', 'google', 'yandex', 'cloudflare']
 
 
-## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
-## Example with both IPv4 and IPv6:
+## Список локальных адресов и портов для прослушивания. Может быть IPv4 и/или IPv6.
+## Пример с IPv4 и IPv6:
 ## listen_addresses = ['127.0.0.1:53', '[::1]:53']
 
 listen_addresses = ['127.0.0.1:53']
 
 
-## Maximum number of simultaneous client connections to accept
+## Максимальное количество одновременных клиентских подключений для приема
 
 max_clients = 250
 
 
-## Switch to a different system user after listening sockets have been created.
-## Note (1): this feature is currently unsupported on Windows.
-## Note (2): this feature is not compatible with systemd socket activation.
-## Note (3): when using -pidfile, the PID file directory must be writable by the new user
+## Переключитесь на другого пользователя системы после создания сокетов прослушивания.
+## Примечание (1): эта функция в настоящее время не поддерживается в Windows.
+## Примечание (2): эта функция несовместима с активацией сокета systemd.
+## Примечание (3): при использовании -pidfile каталог файла PID должен быть доступен для записи новому пользователю.
 
 # user_name = 'nobody'
 
 
-## Require servers (from static + remote sources) to satisfy specific properties
+## Требовать, чтобы сервера (из статических + удаленных источников) удовлетворяли определенным свойствам
 
-# Use servers reachable over IPv4
+# Использовать сервера, доступные по протоколу IPv4
 ipv4_servers = true
 
-# Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
+# Использовать сервера, доступные по протоколу IPv6 -- Не включать, если у вас нет подключения по протоколу IPv6
 ipv6_servers = false
 
-# Use servers implementing the DNSCrypt protocol
+# Использовать сервера, реализующие протокол DNSCrypt
 dnscrypt_servers = true
 
-# Use servers implementing the DNS-over-HTTPS protocol
+# Использовать сервера, реализующие протокол DNS-over-HTTPS protocol
 doh_servers = true
 
 
-## Require servers defined by remote sources to satisfy specific properties
+## Требовать, чтобы сервера, определенные удаленными источниками, удовлетворяли определенным свойствам
 
-# Server must support DNS security extensions (DNSSEC)
+# Сервер должен поддерживать расширения безопасности DNS (DNSSEC)
 require_dnssec = false
 
-# Server must not log user queries (declarative)
+# Сервер не должен регистрировать пользовательские запросы (декларативный)
 require_nolog = true
 
-# Server must not enforce its own blacklist (for parental control, ads blocking...)
+# Сервер не должен использовать собственный черный список (для родительского контроля, блокировки рекламы ...)
 require_nofilter = true
 
-# Server names to avoid even if they match all criteria
+# Имена серверов, которые следует избегать, даже если они соответствуют всем критериям
 disabled_server_names = []
 
 
-## Always use TCP to connect to upstream servers.
-## This can be useful if you need to route everything through Tor.
-## Otherwise, leave this to `false`, as it doesn't improve security
-## (dnscrypt-proxy will always encrypt everything even using UDP), and can
-## only increase latency.
+## Всегда используйте TCP для подключения к вышестоящим серверам.
+## Это может быть полезно, если вам нужно маршрутизировать все через Tor.
+## В противном случае оставьте значение false, поскольку это не повышает безопасность
+## (dnscrypt-proxy всегда будет шифровать все, даже используя UDP), и может
+## только увеличить задержку.
 
 force_tcp = false
 
 
-## SOCKS proxy
-## Uncomment the following line to route all TCP connections to a local Tor node
-## Tor doesn't support UDP, so set `force_tcp` to `true` as well.
+## SOCKS прокси
+## Раскомментируйте следующую строку, чтобы направить все TCP-соединения на локальный узел Tor.
+## Tor не поддерживает UDP, поэтому установите для параметра `force_tcp` значение `true`.
 
 # proxy = 'socks5://127.0.0.1:9050'
 
 
-## HTTP/HTTPS proxy
-## Only for DoH servers
+## HTTP/HTTPS прокси
+## Только для серверов DoH
 
 # http_proxy = 'http://127.0.0.1:8888'
 
