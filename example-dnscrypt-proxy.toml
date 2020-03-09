@@ -115,57 +115,57 @@ timeout = 5000
 keepalive = 30
 
 
-## Response for blocked queries.  Options are `refused`, `hinfo` (default) or
-## an IP response.  To give an IP response, use the format `a:<IPv4>,aaaa:<IPv6>`.
-## Using the `hinfo` option means that some responses will be lies.
-## Unfortunately, the `hinfo` option appears to be required for Android 8+
+## Ответ на заблокированные запросы.  Возможные варианты: `refused`, `hinfo` (по умолчанию) или
+## IP-ответ. Чтобы дать IP-ответ, используйте формат `a:<IPv4>,aaaa:<IPv6>`.
+## Использование опции `hinfo` означает, что некоторые ответы будут ложными.
+## К сожалению, опция `hinfo` необходима для Android 8+
 
 # blocked_query_response = 'refused'
 
 
-## Load-balancing strategy: 'p2' (default), 'ph', 'first' or 'random'
+## Стратегия баланса нагрузки: 'p2' (по умолчанию), 'ph', 'first' или 'random'
 
 # lb_strategy = 'p2'
 
-## Set to `true` to constantly try to estimate the latency of all the resolvers
-## and adjust the load-balancing parameters accordingly, or to `false` to disable.
+## Установите значение `true` чтобы постоянно пытаться оценить задержку всех резольверов (серверов)
+## и соответствующим образом настроить параметры баланса нагрузки, или `false` чтобы отключить.
 
 # lb_estimator = true
 
 
-## Log level (0-6, default: 2 - 0 is very verbose, 6 only contains fatal errors)
+## Уровень журнала (0-6, по умолчанию: 2 - 0 очень подробный, 6 содержит только фатальные ошибки)
 
 # log_level = 2
 
 
-## log file for the application
+## Файл журнала (имя файла)
 
 # log_file = 'dnscrypt-proxy.log'
 
 
-## Use the system logger (syslog on Unix, Event Log on Windows)
+## Использовать системный журнал (системный журнал в Unix, журнал событий в Windows)
 
 # use_syslog = true
 
 
-## Delay, in minutes, after which certificates are reloaded
+## Задержка, в минутах, после чего сертификаты перезагружаются
 
 cert_refresh_delay = 240
 
 
-## DNSCrypt: Create a new, unique key for every single DNS query
-## This may improve privacy but can also have a significant impact on CPU usage
-## Only enable if you don't have a lot of network load
+## DNSCrypt: Создать новый уникальный ключ для каждого DNS-запроса.
+## Это может улучшить конфиденциальность, но также может оказать существенное влияние на использование процессора.
+## Включайте, если у вас нет большой сетевой нагрузки.
 
 # dnscrypt_ephemeral_keys = false
 
 
-## DoH: Disable TLS session tickets - increases privacy but also latency
+## DoH: Отключить TLS состояние сессии - увеличивает конфиденциальность, но и время ожидания
 
 # tls_disable_session_tickets = false
 
 
-## DoH: Use a specific cipher suite instead of the server preference
+## DoH: Использовать определенное шифрование, вместо настроек сервера.
 ## 49199 = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 ## 49195 = TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 ## 52392 = TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
@@ -173,12 +173,12 @@ cert_refresh_delay = 240
 ##  4865 = TLS_AES_128_GCM_SHA256
 ##  4867 = TLS_CHACHA20_POLY1305_SHA256
 ##
-## On non-Intel CPUs such as MIPS routers and ARM systems (Android, Raspberry Pi...),
-## the following suite improves performance.
-## This may also help on Intel CPUs running 32-bit operating systems.
+## Следующий набор повышает производительность
+## на процессорах MIPS и ARM (Android, Raspberry Pi...).
+## Это также может помочь процессорам Intel, работающих под управлением 32-разрядных ОС.
 ##
-## Keep tls_cipher_suite empty if you have issues fetching sources or
-## connecting to some DoH servers. Google and Cloudflare are fine with it.
+## Оставьте значение tls_cipher_suite пустым, если у вас есть проблемы с загрузкой источников или
+## подключением к некоторым DoH-серверам. Google и Cloudflare прекрасно справляются с этим.
 
 # tls_cipher_suite = [52392, 49199]
 
